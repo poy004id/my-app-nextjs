@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Stack, Container, Card } from "@mui/material";
+import { Box, Stack, Container, Card, CardContent } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 export default function Signin() {
@@ -14,9 +14,15 @@ export default function Signin() {
         display: "flex",
       }}
     >
-      <Card sx={{ backgroundColor: "yellow", width: 300, height: 400 }}>
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
+      <Card
+        sx={{
+          backgroundColor: "white",
+        }}
+      >
+        <CardContent sx={{ display: "flex", flexDirection: "column" }}>
+          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+          <TextField id="filled-basic" label="Filled" variant="outlined" />
+        </CardContent>
       </Card>
     </Container>
   );
