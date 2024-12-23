@@ -1,11 +1,30 @@
 import {useState} from "react";
 import { Box, Stack, Container, Card, CardContent, Typography, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
 
 export default function Signin() {
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  console.log("username", username);
+
+
+  function handleSignIn() {
+    console.log("username", username);
+    console.log("password", password);
+    try {
+      cost doSignIn =  axios.post("http://localhost:3000/auth/signin", {username, password})
+      if (doSignIn.status === 200) {
+        // localStorage.setItem("token", doSignIn.data.token);
+        window.location.replace("/");
+      }
+    } catch (error) {
+      console.error("error", error);
+      
+    }
+  }
+
+
 
   return (
     <Container
@@ -32,11 +51,17 @@ export default function Signin() {
             label="Username" 
             variant="outlined" 
             value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
 
 
-          <TextField id="filled-basic" label="Password" variant="outlined" type='password' />
-          <Button variant="contained">Sign In</Button>
+          <TextField id="filled-basic" label="Password" variant="outlined" type='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button variant="contained"
+            onClick={handleSignIn}
+          >Sign In</Button>
         </CardContent>
       </Card>
     </Container>
