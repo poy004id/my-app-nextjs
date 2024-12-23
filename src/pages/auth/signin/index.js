@@ -28,7 +28,7 @@ export default function Signin() {
       if (doSignIn?.status === 200) {
         console.log("success");
         localStorage.setItem("accessToken", doSignIn.data.data.accessToken);
-        window.location.replace("/dasboard");
+        window.location.replace("/dashboard");
       }
     } catch (error) {
       setError(error?.response?.data?.message || "Terjadi kesalahan");
