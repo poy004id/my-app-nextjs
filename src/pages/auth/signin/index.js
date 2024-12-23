@@ -2,6 +2,7 @@ import {useState} from "react";
 import { Box, Stack, Container, Card, CardContent, Typography, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Signin() {
   const [username, setUsername] = useState("");
@@ -9,18 +10,14 @@ export default function Signin() {
 
 
 
-  function handleSignIn() {
-    console.log("username", username);
-    console.log("password", password);
+  const handleSignIn= async() => {
     try {
-      cost doSignIn =  axios.post("http://localhost:3000/auth/signin", {username, password})
-      if (doSignIn.status === 200) {
-        // localStorage.setItem("token", doSignIn.data.token);
-        window.location.replace("/");
+      const doSignIn =  await axios.post(`${API_URL}/auth/signin`, {username, password} )
+      if (doSignIn?.status == 200) {
+        console.log("success")
       }
     } catch (error) {
       console.error("error", error);
-      
     }
   }
 
