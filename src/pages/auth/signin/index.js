@@ -12,7 +12,8 @@ export default function Signin() {
 
   const handleSignIn= async() => {
     try {
-      const doSignIn =  await axios.post(`${API_URL}/auth/signin`, {username, password} )
+      const doSignIn =  await  axios.post(`${API_URL}/auth/signin`, {username, password} )
+      console.log("doSignIn", doSignIn)
       if (doSignIn?.status == 200) {
         console.log("success")
       }
