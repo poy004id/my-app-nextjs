@@ -16,6 +16,8 @@ export default function Signin() {
       console.log("doSignIn", doSignIn)
       if (doSignIn?.status == 200) {
         console.log("success")
+        // set token to localstorage
+        localStorage.setItem('accessToken', doSignIn.data.data.accessToken)
       }
     } catch (error) {
       console.error("error", error);
